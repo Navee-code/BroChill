@@ -5,14 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
-<!--    <ProgressBar-->
-<!--        android:id="@+id/progress_circular2"-->
-<!--        android:layout_width="50dp"-->
-<!--        android:layout_height="50dp"-->
-<!--        card_view:layout_constraintBottom_toTopOf="@+id/card_view2"-->
-<!--        card_view:layout_constraintEnd_toEndOf="parent"-->
-<!--        card_view:layout_constraintStart_toStartOf="parent"-->
-<!--        card_view:layout_constraintTop_toTopOf="parent" />-->
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/card_view2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view2"

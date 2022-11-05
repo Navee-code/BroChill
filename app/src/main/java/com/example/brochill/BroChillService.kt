@@ -10,17 +10,12 @@ import retrofit2.http.Query
 interface BroChillService {
     @POST("login")
    suspend fun login(
-        @Query("email") email: String,
-        @Query("password") password: String,
+        @Body dataModal: DataLogin?
     ): Response<LoginResponse>
 
     @POST("register")
     suspend fun register(
         @Body dataModal: DataRegisterModel?
-//        @Query("first_name") firstName: String,
-//        @Query("last_name") lastName: String,
-//        @Query("email") email: String,
-//        @Query("password") password: String
     ): Response<LoginResponse>
 
 }
