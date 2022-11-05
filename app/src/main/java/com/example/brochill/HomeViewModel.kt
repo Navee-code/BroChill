@@ -8,22 +8,35 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
 
+
 class HomeViewModel : ViewModel() {
-    val service = BaseUrl.getInstance().create(BroChillService::class.java)
+   private val service = BaseUrl.getInstance().create(BroChillService::class.java)
 
 
-    fun login(s: String, s1: String) {
+    fun login(email: String, password: String) {
         GlobalScope.launch(Dispatchers.IO) {
-            var response = service.login(s, s1)
-            var hello = response.body()
+             service.login(email, password)
             withContext(Dispatchers.Main){
 
             }
-
-
-
         }
+    }
+    fun register(firstName: String, lastName: String, email: String, password: String) {
+        GlobalScope.launch(Dispatchers.IO) {
+            val dataModal = DataRegisterModel(firstName,lastName,email,password)
+            val jsonObj = JSONObject()
+            jsonObj.put("first_name",firstName )
+            jsonObj.put("last_name",lastName)
+            jsonObj.put("email",email )
+            jsonObj.put("password",password)
 
+          var sell= service.register(dataModal)
+            withContext(Dispatchers.Main){
+                  var work=sell.body()
+                Log.e("TAG",work?.token.toString())
+
+            }
+        }
 
     }
 

@@ -18,7 +18,10 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this,SignUpActivity::class.java))
         }
         binding.login.setOnClickListener{
-               viewModel.login("nirubas7@gmail.com","123456")
+            var email=binding.login.text.toString().trim()
+            var password=binding.loginPassword.toString().trim()
+               viewModel.login(email,password)
         }
+
     }
 }

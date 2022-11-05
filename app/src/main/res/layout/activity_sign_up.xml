@@ -44,7 +44,7 @@
                 android:layout_marginTop="20dp"
                 android:hint="@string/First_name">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sign_up_user"
+                    android:id="@+id/firstName"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                 android:layout_marginTop="20dp"
                 android:hint="@string/Last_name">
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/Last_up_user"
+                    android:id="@+id/lastName"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                 android:hint="@string/Email">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sign_up_password"
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:maxLines="1"
                     android:singleLine="true"
@@ -88,7 +88,7 @@
                 android:hint="@string/prompt_password">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sign_conform_password"
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:maxLines="1"
                     android:singleLine="true"
