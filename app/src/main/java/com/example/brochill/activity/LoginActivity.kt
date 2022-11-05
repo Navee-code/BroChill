@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.brochill.HomeViewModel
@@ -25,23 +26,29 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(this, SignUpActivity::class.java))
         }
         binding.login.setOnClickListener {
+            binding.progressCircular.visibility=View.VISIBLE
             email = binding.email.text.toString().trim()
             var password=binding.passwordLog.text.toString().trim()
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 viewModel.login(email, password)
             } else {
+                binding.progressCircular.visibility=View.GONE
                 Toast.makeText(this, "Fill the empty blocks", Toast.LENGTH_SHORT).show()
             }
 
         }
+        viewModel.credentials.observe(this){
+            binding.progressCircular.visibility=View.GONE
+            Toast.makeText(this, "Wrong Entries", Toast.LENGTH_SHORT).show()
+        }
         viewModel.loginCredential.observe(this) {
 
-            if (email == it.email) {
-                sharedPreferences.setToken(it.token, this)
-                startActivity(Intent(this, MainActivity::class.java))
-            }else{
-                Toast.makeText(this, "Wrong Credentials", Toast.LENGTH_SHORT).show()
-            }
+                if (email == it.email) {
+                    binding.progressCircular.visibility=View.GONE
+                    sharedPreferences.setToken(it.token, this)
+                    startActivity(Intent(this, MainActivity::class.java))
+                }
+
 
         }
     }

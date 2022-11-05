@@ -9,11 +9,12 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class HomeViewModel : ViewModel() {
-
+    var credentials: MutableLiveData<String> = MutableLiveData()
     val registerCredential: MutableLiveData<LoginResponse> = MutableLiveData()
     val loginCredential: MutableLiveData<LoginResponse> = MutableLiveData()
-    val tweetCreated: MutableLiveData<CreateTweetModel> = MutableLiveData()
     val getAllTweets: MutableLiveData<ResponseGetTweets> = MutableLiveData()
+    val welcome: MutableLiveData<WelcomeData?> = MutableLiveData()
+    val login:MutableLiveData<String> = MutableLiveData()
 
 
     fun login(email: String, password: String) {
@@ -21,7 +22,11 @@ class HomeViewModel : ViewModel() {
         GlobalScope.launch(Dispatchers.IO) {
             val dataModal = DataLogin(email, password)
             var response = service.login(dataModal)
-            loginCredential.postValue(response.body())
+            if(response.body() != null){
+                loginCredential.postValue(response.body())
+            }else{
+                credentials.postValue("bad")
+            }
         }
     }
 
@@ -40,13 +45,29 @@ class HomeViewModel : ViewModel() {
             service.createTweet(dataModal)
         }
     }
-    fun getTweets(token:String?){
+    fun getTweets(token:String?) {
         val service = BaseUrl.getInstance(token).create(BroChillService::class.java)
         GlobalScope.launch(Dispatchers.IO) {
-            var response=service.getTweet()
+            var response = service.getTweet()
 
             getAllTweets.postValue(response.body())
         }
+
+    }
+    fun getWelcome(token:String?){
+        if(token?.isNotEmpty()!!){
+            val service = BaseUrl.getInstance(token).create(BroChillService::class.java)
+            GlobalScope.launch(Dispatchers.IO) {
+                var response=service.getWelcome()
+                var server= response.body()
+                welcome.postValue(server)
+
+            }
+        }else{
+            login.postValue("log")
+
+        }
+
 
     }
 }

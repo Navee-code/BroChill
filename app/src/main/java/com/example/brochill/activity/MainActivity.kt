@@ -4,10 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
+import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.brochill.HomeViewModel
+import com.example.brochill.R
 import com.example.brochill.SharedPreference
 import com.example.brochill.TweetAdaptor
 import com.example.brochill.databinding.ActivityMainBinding
@@ -38,11 +42,21 @@ class MainActivity : AppCompatActivity() {
 }
     }
     private fun recyclerView(tweets: ArrayList<String>) {
+        binding.progressBar2.visibility=View.GONE
         binding.recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         var  adapter=TweetAdaptor(tweets)
         binding.recyclerView.adapter = adapter
     }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.logout_menu,menu)
+        return true
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
+      sharedPreferences.setToken("",this)
+        startActivity(Intent(this, LoginActivity::class.java))
+        return super.onOptionsItemSelected(item)
+    }
     override fun onBackPressed() {
         val a = Intent(Intent.ACTION_MAIN)
         a.addCategory(Intent.CATEGORY_HOME)
