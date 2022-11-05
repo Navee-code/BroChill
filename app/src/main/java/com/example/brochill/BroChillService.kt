@@ -2,10 +2,7 @@ package com.example.brochill
 
 import okhttp3.RequestBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface BroChillService {
     @POST("login")
@@ -18,4 +15,17 @@ interface BroChillService {
         @Body dataModal: DataRegisterModel?
     ): Response<LoginResponse>
 
+
+    @POST("tweets")
+    suspend fun createTweet(
+        @Body dataModal: DataCreateTweet?
+    ): Response<ResponseTweet>
+
+    @GET("tweets")
+    suspend fun getTweet(
+    ):Response<ResponseGetTweets>
+
+    @GET("welcome")
+       suspend fun getWelcome(
+       ):Response<WelcomeData>
 }

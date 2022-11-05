@@ -1,11 +1,13 @@
-package com.example.brochill
+package com.example.brochill.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import com.example.brochill.HomeViewModel
+import com.example.brochill.SharedPreference
 import com.example.brochill.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -24,7 +26,7 @@ class LoginActivity : AppCompatActivity() {
         }
         binding.login.setOnClickListener {
             email = binding.email.text.toString().trim()
-            var password = binding.passwordLog.toString().trim()
+            var password=binding.passwordLog.text.toString().trim()
             if (email.isNotEmpty() && password.isNotEmpty()) {
                 viewModel.login(email, password)
             } else {
@@ -33,14 +35,24 @@ class LoginActivity : AppCompatActivity() {
 
         }
         viewModel.loginCredential.observe(this) {
+
             if (email == it.email) {
                 sharedPreferences.setToken(it.token, this)
-                sharedPreferences.setProfileId(it._id, this)
                 startActivity(Intent(this, MainActivity::class.java))
             }else{
                 Toast.makeText(this, "Wrong Credentials", Toast.LENGTH_SHORT).show()
             }
 
         }
+    }
+
+
+
+    override fun onBackPressed() {
+        val a = Intent(Intent.ACTION_MAIN)
+        a.addCategory(Intent.CATEGORY_HOME)
+        a.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(a)
+        super.onBackPressed()
     }
 }
