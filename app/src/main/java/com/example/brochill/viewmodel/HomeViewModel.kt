@@ -1,6 +1,7 @@
 package com.example.brochill.viewmodel
 
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.brochill.api.BaseUrl
@@ -68,6 +69,7 @@ class HomeViewModel : ViewModel() {
 
     }
     fun getWelcome(token:String?){
+        Log.e("TAG",token.toString())
         if(token?.isNotEmpty()!!){
             val service = BaseUrl.getInstance(token).create(BroChillService::class.java)
             GlobalScope.launch(Dispatchers.IO) {

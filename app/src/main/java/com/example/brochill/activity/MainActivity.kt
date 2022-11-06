@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         sharedPreferences= SharedPreference()
+
         viewModel = ViewModelProvider(this)[HomeViewModel::class.java]
         binding.tweet.setOnClickListener{
             startActivity(Intent(this, TweetActivity::class.java))
