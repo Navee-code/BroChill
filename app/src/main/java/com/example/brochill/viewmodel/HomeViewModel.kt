@@ -37,6 +37,8 @@ class HomeViewModel : ViewModel() {
                 } else {
                     credentials.postValue("bad")
                 }
+            }else{
+                credentials.postValue("bad")
             }
         }
     }
@@ -52,6 +54,8 @@ class HomeViewModel : ViewModel() {
                 } else {
                     userRegistered.postValue("registered")
                 }
+            }else{
+                userRegistered.postValue("registered")
             }
 
         }
