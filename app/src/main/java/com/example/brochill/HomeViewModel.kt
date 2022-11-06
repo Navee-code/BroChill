@@ -15,6 +15,7 @@ class HomeViewModel : ViewModel() {
     val getAllTweets: MutableLiveData<ResponseGetTweets> = MutableLiveData()
     val welcome: MutableLiveData<WelcomeData?> = MutableLiveData()
     val login:MutableLiveData<String> = MutableLiveData()
+    val userRegistered :MutableLiveData<String> = MutableLiveData()
 
 
     fun login(email: String, password: String) {
@@ -35,7 +36,12 @@ class HomeViewModel : ViewModel() {
         GlobalScope.launch(Dispatchers.IO) {
             val dataModal = DataRegisterModel(firstName, lastName, email, password)
             var response = service.register(dataModal)
-            registerCredential.postValue(response.body())
+            if(response.body()!=null){
+                registerCredential.postValue(response.body())
+            }else{
+             userRegistered.postValue("registered")
+            }
+
         }
     }
     fun createTweet(token: String?, message: String) {

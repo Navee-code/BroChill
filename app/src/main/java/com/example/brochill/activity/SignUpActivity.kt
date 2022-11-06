@@ -34,6 +34,11 @@ class SignUpActivity : AppCompatActivity() {
             }
         }
 
+        viewModel.userRegistered.observe(this){
+            binding.progress.visibility=View.INVISIBLE
+            Toast.makeText(this,"User Registered Already",Toast.LENGTH_SHORT).show()
+        }
+
 
         viewModel.registerCredential.observe(this){
             if(email ==it.email){
