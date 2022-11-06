@@ -31,10 +31,12 @@ class HomeViewModel : ViewModel() {
         GlobalScope.launch(Dispatchers.IO) {
             val dataModal = DataLogin(email, password)
             var response = service.login(dataModal)
-            if(response.body() != null){
-                loginCredential.postValue(response.body())
-            }else{
-                credentials.postValue("bad")
+            if(response.isSuccessful) {
+                if (response.body() != null) {
+                    loginCredential.postValue(response.body())
+                } else {
+                    credentials.postValue("bad")
+                }
             }
         }
     }
@@ -44,10 +46,12 @@ class HomeViewModel : ViewModel() {
         GlobalScope.launch(Dispatchers.IO) {
             val dataModal = DataRegisterModel(firstName, lastName, email, password)
             var response = service.register(dataModal)
-            if(response.body()!=null){
-                registerCredential.postValue(response.body())
-            }else{
-             userRegistered.postValue("registered")
+            if(response.isSuccessful) {
+                if (response.body() != null) {
+                    registerCredential.postValue(response.body())
+                } else {
+                    userRegistered.postValue("registered")
+                }
             }
 
         }
@@ -63,19 +67,24 @@ class HomeViewModel : ViewModel() {
         val service = BaseUrl.getInstance(token).create(BroChillService::class.java)
         GlobalScope.launch(Dispatchers.IO) {
             var response = service.getTweet()
-
-            getAllTweets.postValue(response.body())
+            if(response.isSuccessful) {
+                getAllTweets.postValue(response.body())
+            }
         }
 
     }
     fun getWelcome(token:String?){
-        Log.e("TAG",token.toString())
         if(token?.isNotEmpty()!!){
             val service = BaseUrl.getInstance(token).create(BroChillService::class.java)
             GlobalScope.launch(Dispatchers.IO) {
+
                 var response=service.getWelcome()
-                var server= response.body()
-                welcome.postValue(server)
+
+                if(response.isSuccessful){
+                    var server= response.body()
+                    welcome.postValue(server)
+                }
+
 
             }
         }else{
