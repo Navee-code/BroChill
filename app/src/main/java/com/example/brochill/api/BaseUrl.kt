@@ -1,4 +1,4 @@
-package com.example.brochill
+package com.example.brochill.api
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient

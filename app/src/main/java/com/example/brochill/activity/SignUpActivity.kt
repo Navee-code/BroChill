@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.brochill.HomeViewModel
+import com.example.brochill.viewmodel.HomeViewModel
 import com.example.brochill.SharedPreference
 import com.example.brochill.databinding.ActivitySignUpBinding
 

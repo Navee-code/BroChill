@@ -7,10 +7,9 @@ import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.brochill.HomeViewModel
+import com.example.brochill.viewmodel.HomeViewModel
 import com.example.brochill.R
 import com.example.brochill.SharedPreference
-import com.example.brochill.databinding.ActivityMainBinding
 import com.example.brochill.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity() {

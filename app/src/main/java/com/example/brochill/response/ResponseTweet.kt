@@ -1,4 +1,4 @@
-package com.example.brochill
+package com.example.brochill.response
 
 data class ResponseTweet(
     val __v: String,

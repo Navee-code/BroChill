@@ -1,6 +1,12 @@
-package com.example.brochill
+package com.example.brochill.api
 
-import okhttp3.RequestBody
+import com.example.brochill.dataclass.DataCreateTweet
+import com.example.brochill.dataclass.DataLogin
+import com.example.brochill.dataclass.DataRegisterModel
+import com.example.brochill.response.WelcomeData
+import com.example.brochill.response.LoginResponse
+import com.example.brochill.response.ResponseGetTweets
+import com.example.brochill.response.ResponseTweet
 import retrofit2.Response
 import retrofit2.http.*
 

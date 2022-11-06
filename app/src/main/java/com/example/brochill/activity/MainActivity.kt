@@ -3,17 +3,16 @@ package com.example.brochill.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.brochill.HomeViewModel
+import com.example.brochill.viewmodel.HomeViewModel
 import com.example.brochill.R
 import com.example.brochill.SharedPreference
-import com.example.brochill.TweetAdaptor
+import com.example.brochill.adapter.TweetAdaptor
 import com.example.brochill.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -34,7 +33,7 @@ class MainActivity : AppCompatActivity() {
        viewModel.getTweets(sharedPreferences.getToken(this))
 
          viewModel.getAllTweets.observe(this){
-            for (i in 0 until it.size){
+            for (i in it.size-1 downTo 0){
                tweets.add(it[i].tweet)
             }
              recyclerView(tweets)
@@ -44,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private fun recyclerView(tweets: ArrayList<String>) {
         binding.progressBar2.visibility=View.GONE
         binding.recyclerView.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
-        var  adapter=TweetAdaptor(tweets)
+        var  adapter= TweetAdaptor(tweets)
         binding.recyclerView.adapter = adapter
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

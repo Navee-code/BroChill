@@ -1,4 +1,4 @@
-package com.example.brochill
+package com.example.brochill.dataclass
 
 data class DataCreateTweet(
     val tweet: String

@@ -1,4 +1,4 @@
-package com.example.brochill
+package com.example.brochill.dataclass
 
 data class DataRegisterModel(
     val first_name: String,

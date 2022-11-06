@@ -3,10 +3,9 @@ package com.example.brochill.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.example.brochill.HomeViewModel
+import com.example.brochill.viewmodel.HomeViewModel
 import com.example.brochill.SharedPreference
 import com.example.brochill.databinding.ActivityTweetBinding
 

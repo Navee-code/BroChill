@@ -1,4 +1,4 @@
-package com.example.brochill
+package com.example.brochill.response
 
 data class GetTweetResponse(
     val tweets:List<String>,

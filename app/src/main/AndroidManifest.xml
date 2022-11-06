@@ -15,6 +15,22 @@
         android:theme="@style/Theme.BroChill"
         tools:targetApi="31">
         <activity
+            android:name=".TweetFullmessage"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".TweetFullMeassageActivity"
+            android:exported="false"
+            android:label="@string/title_activity_tweet_full_meassage"
+            android:theme="@style/Theme.BroChill.NoActionBar">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activity.WelcomeActivity"
             android:exported="true">
             <intent-filter>
@@ -22,12 +38,13 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".TweetMessage"
+            android:name=".activity.TweetMessage"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -50,16 +67,14 @@
         <activity
             android:name=".activity.LoginActivity"
             android:exported="true">
-
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
-            android:exported="false">
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

@@ -1,4 +1,4 @@
-package com.example.brochill
+package com.example.brochill.response
 
 data class LoginResponse(
     val _id: String,
