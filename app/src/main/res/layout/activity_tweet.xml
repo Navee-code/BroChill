@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
         android:layout_marginTop="50dp"
+        android:textColor="@color/white"
         android:background="@drawable/round_button"
         android:text="POST" />
 
