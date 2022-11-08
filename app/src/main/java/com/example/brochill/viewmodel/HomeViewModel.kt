@@ -25,7 +25,6 @@ class HomeViewModel : ViewModel() {
     val login:MutableLiveData<String> = MutableLiveData()
     val userRegistered :MutableLiveData<String> = MutableLiveData()
 
-
     fun login(email: String, password: String) {
         val service = BaseUrl.getInstance(" ").create(BroChillService::class.java)
         GlobalScope.launch(Dispatchers.IO) {
@@ -88,15 +87,10 @@ class HomeViewModel : ViewModel() {
                     var server= response.body()
                     welcome.postValue(server)
                 }
-
-
             }
         }else{
             login.postValue("log")
-
         }
-
-
     }
 }
 

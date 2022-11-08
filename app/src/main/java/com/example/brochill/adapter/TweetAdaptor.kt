@@ -19,7 +19,6 @@ var tweet=tweets
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-
             .inflate(R.layout.tweet_adaptor, parent, false)
         return ViewHolder(view)
     }

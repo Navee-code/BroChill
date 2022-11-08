@@ -18,13 +18,12 @@ object BaseUrl{
             }
 
         })
+    return Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(builder.build())
+        .baseUrl(URL)
+        .build()
 
-        return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(builder.build())
-            .baseUrl(URL)
-
-            .build()
     }
 
 
